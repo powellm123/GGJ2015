@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BlackholePhysics.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\JSPyhsic.js">
     <Files>
-      <File FileName="Assets\JSPyhsic.js" Line="12" Column="19" />
-      <File FileName="Assets\BlackholePhysics.js" Line="7" Column="21" />
+      <File FileName="Assets\JSPyhsic.js" Line="18" Column="3" />
+      <File FileName="Assets\BlackholePhysics.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
