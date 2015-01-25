@@ -5,5 +5,9 @@ function Start () {
 }
 
 function Update () {
-	rigidbody2D.velocity = Vector2.zero;
+}
+
+function OnTriggerEnter2D(other : Collider2D)
+{
+	Destroy(other.gameObject);
 }

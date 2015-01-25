@@ -2,10 +2,11 @@
 
 private var HasFocus;
 private var lastMousePos: Vector2;
+var BelongsToWho : int;
  
 function Start ()
 {
-rigidbody2D.drag = 1;
+	rigidbody2D.drag = 1;
 }
 
 function Update()

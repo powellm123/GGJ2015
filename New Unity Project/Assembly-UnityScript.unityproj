@@ -48,7 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\AreaScript.js" />
      <Compile Include="Assets\BlackholePhysics.js" />
+     <Compile Include="Assets\GMScript.js" />
      <Compile Include="Assets\JSPyhsic.js" />
+     <Compile Include="Assets\PlayerScript.js" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
