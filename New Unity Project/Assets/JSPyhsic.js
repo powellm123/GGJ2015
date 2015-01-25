@@ -3,7 +3,7 @@
 private var HasFocus;
 private var lastMousePos: Vector2;
 var BelongsToWho : int;
- 
+ private var goodClick;
 function Start ()
 {
 	rigidbody2D.drag = 1;
@@ -15,7 +15,13 @@ function Update()
 
 function OnMouseDown()
 {
+if(GameObject.Find("_GM").GetComponent(GMScript).PlayerTurn == BelongsToWho)
+{
 	lastMousePos = Input.mousePosition;
+	goodClick = true;
+	}
+else
+	goodClick = false;
 }
 
 function OnMouseDrag()
@@ -24,7 +30,11 @@ function OnMouseDrag()
 
 function OnMouseUp()
 {
-	rigidbody2D.AddForce(12*  (Input.mousePosition - lastMousePos));
+	if(!goodClick) return;
+
+	rigidbody2D.AddForce(35*  (Input.mousePosition - lastMousePos));
+	GameObject.Find("_GM").GetComponent(GMScript).MoveDone = true;
+	
 }
 
 //function OnGUI() {

@@ -1,14 +1,22 @@
 ﻿#pragma strict
 
 var numberOfPlayers : int = 2;
-
+var PlayerTurn : int = 1;
+var MoveDone = false;
+var PlayerDead : int = -1;
+var Players : GameObject[];
+var PlayerLose : int = -1;
+var PlayerAlive: boolean[];
 
 function Start () {
 	var prefab = AssetDatabase.LoadAssetAtPath("Assets/Player.prefab", typeof(GameObject));
+	Players = new GameObject[numberOfPlayers];
+	PlayerAlive = new boolean[numberOfPlayers];
 	for(var i = 0; i < numberOfPlayers; ++i)
 	{
-		var player : GameObject = Instantiate(prefab, Vector3(-400 * i, -400 * i), Quaternion.identity);
-		player.GetComponent(PlayerScript).PlayerNumber = i+1;
+		Players[i] = Instantiate(prefab, Vector3(-400 * i, -400 * i), Quaternion.identity);
+		Players[i].GetComponent(PlayerScript).PlayerNumber = i;
+		PlayerAlive[i] = true;
 	}
 	var areaPrefab = AssetDatabase.LoadAssetAtPath("Assets/Area.prefab", typeof(GameObject));
 	Instantiate(areaPrefab, Vector3(-189, -187), Quaternion.identity);
@@ -19,8 +27,52 @@ function Start () {
 	{
 		Instantiate(junkPrefab, Vector3.zero, Quaternion.identity);
 	}
+	
+	PlayerTurn = 0;
 }
 
 function Update () {
+	if(MoveDone)
+	{
+		PlayerTurn = (PlayerTurn +1) % (numberOfPlayers);
+		MoveDone = false;
+	}
+	if(PlayerDead > -1)
+	{
+		Players[PlayerDead].GetComponent(PlayerScript).amountOfMarbles -= 1;
+		if(Players[PlayerDead].GetComponent(PlayerScript).amountOfMarbles == 0){
+			PlayerAlive[PlayerDead] = false;
+			Debug.Log("Player died");
+		}
+		PlayerDead = -1;
+	}
+}
+function CountAlivePlayers()
+{
+	var count = 0;
+	for(var i = 0; i < numberOfPlayers; i++)
+	{
+		if(PlayerAlive[i])
+			count++;
+	}
+	
+	return count;
+}
 
+function GetAlivePlayer()
+{
+	for(var i = 0; i < numberOfPlayers; i++)
+	{
+		if(PlayerAlive[i])
+			return i;
+	}
+	return 0;
+}
+function OnGUI()
+{
+	if(CountAlivePlayers() > 1)
+		GUI.TextField(Rect(100, 0, 100, 100), "Player " + (PlayerTurn+1).ToString() + " Turn");
+	else{
+		GUI.TextField(Rect(100, 0, 100, 100), "Player " + GetAlivePlayer() + " Wins");
+	}
 }
