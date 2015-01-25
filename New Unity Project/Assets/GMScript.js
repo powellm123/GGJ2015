@@ -14,8 +14,11 @@ function Start () {
 	Instantiate(areaPrefab, Vector3(-189, -187), Quaternion.identity);
 	//Debug.Log("Done Loading");
 	
-	
-	
+	var junkPrefab = AssetDatabase.LoadAssetAtPath("Assets/SpaceJunk.prefab", typeof(GameObject));
+	for(i = 0; i < 100; i++)
+	{
+		Instantiate(junkPrefab, Vector3.zero, Quaternion.identity);
+	}
 }
 
 function Update () {

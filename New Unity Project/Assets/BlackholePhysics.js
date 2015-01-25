@@ -9,5 +9,6 @@ function Update () {
 
 function OnTriggerEnter2D(other : Collider2D)
 {
-	Destroy(other.gameObject);
+	if(other.tag == "Player")
+		Destroy(other.gameObject);
 }
