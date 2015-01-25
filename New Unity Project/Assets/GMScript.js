@@ -24,10 +24,11 @@ function Start () {
 	
 	var junkPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpaceJunk.prefab", typeof(GameObject));
 	var spacePrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpaceAsteriod.prefab", typeof(GameObject));
-	for(i = 0; i < 50; i++)
+	for(i = 0; i < 100; i++)
 	{
 		Instantiate(junkPrefab, Vector3.zero, Quaternion.identity);
-		Instantiate(spacePrefab, Vector3.zero, Quaternion.identity);
+		if(i%5 == 0)
+			Instantiate(spacePrefab, Vector3.zero, Quaternion.identity);
 	}
 	
 	PlayerTurn = 0;

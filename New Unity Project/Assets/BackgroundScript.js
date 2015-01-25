@@ -5,5 +5,5 @@ function Start () {
 }
 
 function Update () {
-	transform.Rotate (Vector3.forward*.01f);
+	transform.Rotate (Vector3.forward*.005f);
 }
