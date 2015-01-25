@@ -32,7 +32,12 @@ function OnMouseUp()
 {
 	if(!goodClick) return;
 
-	rigidbody2D.AddForce(35*  (Input.mousePosition - lastMousePos));
+	var dis = Input.mousePosition - lastMousePos;
+	if(dis.magnitude < 10){
+		goodClick = false;
+		return;
+	}
+	rigidbody2D.AddForce(35*  (dis));
 	GameObject.Find("_GM").GetComponent(GMScript).MoveDone = true;
 	
 }

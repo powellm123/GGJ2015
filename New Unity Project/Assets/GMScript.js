@@ -9,7 +9,7 @@ var PlayerLose : int = -1;
 var PlayerAlive: boolean[];
 
 function Start () {
-	var prefab = AssetDatabase.LoadAssetAtPath("Assets/Player.prefab", typeof(GameObject));
+	var prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Player.prefab", typeof(GameObject));
 	Players = new GameObject[numberOfPlayers];
 	PlayerAlive = new boolean[numberOfPlayers];
 	for(var i = 0; i < numberOfPlayers; ++i)
@@ -18,14 +18,16 @@ function Start () {
 		Players[i].GetComponent(PlayerScript).PlayerNumber = i;
 		PlayerAlive[i] = true;
 	}
-	var areaPrefab = AssetDatabase.LoadAssetAtPath("Assets/Area.prefab", typeof(GameObject));
+	var areaPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Area.prefab", typeof(GameObject));
 	Instantiate(areaPrefab, Vector3(-189, -187), Quaternion.identity);
 	//Debug.Log("Done Loading");
 	
-	var junkPrefab = AssetDatabase.LoadAssetAtPath("Assets/SpaceJunk.prefab", typeof(GameObject));
-	for(i = 0; i < 100; i++)
+	var junkPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpaceJunk.prefab", typeof(GameObject));
+	var spacePrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/SpaceAsteriod.prefab", typeof(GameObject));
+	for(i = 0; i < 50; i++)
 	{
 		Instantiate(junkPrefab, Vector3.zero, Quaternion.identity);
+		Instantiate(spacePrefab, Vector3.zero, Quaternion.identity);
 	}
 	
 	PlayerTurn = 0;
