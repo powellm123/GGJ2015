@@ -5,27 +5,25 @@ private var lastMousePos: Vector2;
  
 function Start ()
 {
+rigidbody2D.drag = 1;
+}
+
+function Update()
+{
 }
 
 function OnMouseDown()
 {
-
-	Debug.Log("In Mouse Down");
 	lastMousePos = Input.mousePosition;
 }
 
 function OnMouseDrag()
-{s
-	var distance = Input.mousePosition - lastMousePos;
-	Debug.Log(distance);
+{
 }
 
 function OnMouseUp()
 {
-	Debug.Log("In Mouse Up");
 	rigidbody2D.AddForce(12*  (Input.mousePosition - lastMousePos));
-	var distance = Input.mousePosition - lastMousePos;
-	Debug.Log(distance);
 }
 
 //function OnGUI() {

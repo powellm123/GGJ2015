@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AreaScript.js" />
      <Compile Include="Assets\BlackholePhysics.js" />
      <Compile Include="Assets\JSPyhsic.js" />
  <Reference Include="UnityEngine.UI">
